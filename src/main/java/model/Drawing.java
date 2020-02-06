@@ -9,11 +9,30 @@ import java.util.List;
 public class Drawing {
     private List<Shape>shapes;
     private int height;
+    private int width;
 
-    public Drawing(List<Shape> shapes, int height, int width) {
-        this.shapes = shapes;
+    public Drawing(int height, int width) {
         this.height = height;
         this.width = width;
     }
-    private int width;
+    
+    public Drawing(){
+        
+    }
+    
+    public void addShape(Shape shape){
+        
+    }
+    
+    public Shape getShapeAt(Point p){
+        
+    }
+    
+    public int getHeight(){
+        return height;
+    }
+    
+    public int getWidth(){
+        return width;
+    }
 }
