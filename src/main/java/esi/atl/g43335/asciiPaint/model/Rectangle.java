@@ -4,16 +4,29 @@ package esi.atl.g43335.asciiPaint.model;
  *
  * @author g43335
  */
-public class Rectangle implements Shape {
+public class Rectangle extends ColoredShape {
 
     private Point upperLeft;
-    double width;
-    double height;
+    private double width;
+    private double height;
 
-    public Rectangle(Point upperLeft, double width, double height) {
+    public Rectangle(Point upperLeft, double width, double height, char color) {
+        super(color);
         this.upperLeft = upperLeft;
         this.width = width;
         this.height = height;
+    }
+
+    public Point getUpperLeft() {
+        return upperLeft;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
     }
 
     @Override
@@ -23,12 +36,9 @@ public class Rectangle implements Shape {
 
     @Override
     public boolean isInside(Point p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (((p.getX() > this.upperLeft.getX())
+                && ((p.getY() <= this.upperLeft.getY())
+                && (p.getX() > this.upperLeft.getX() + this.width))
+                && (p.getY() <= this.upperLeft.getY() + this.height)));
     }
-
-    @Override
-    public char getColor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

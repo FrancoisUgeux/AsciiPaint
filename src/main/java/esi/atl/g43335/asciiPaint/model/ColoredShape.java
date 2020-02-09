@@ -4,13 +4,14 @@ package esi.atl.g43335.asciiPaint.model;
  *
  * @author g43335
  */
-public class ColoredShape {
+public abstract class ColoredShape implements Shape{
     private char color;
     
     public ColoredShape(char color){
         
     }
     
+    @Override
     public char getColor(){
         return color;
     }

@@ -4,18 +4,30 @@ package esi.atl.g43335.asciiPaint.model;
  *
  * @author g43335
  */
-public class Circle implements Shape {
+public class Circle extends ColoredShape {
 
     private Point center;
     private double radius;
 
-    public Circle(Point center, double radius) {
+    public Circle(Point center, double radius,char color) {
+        super(color);
         if (radius <= 0) {
             throw new IllegalArgumentException("radius must be positive"
                     + ", received: " + radius);
         }
+        if(color == ' '){
+            throw new IllegalArgumentException("color can't be empty");
+        }
         this.center = center;
         this.radius = radius;
+    }
+
+    public Point getCenter() {
+        return center;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 
     @Override
@@ -25,12 +37,7 @@ public class Circle implements Shape {
 
     @Override
     public boolean isInside(Point p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double distance = center.distanceTo(p);
+        return distance <= radius;
     }
-
-    @Override
-    public char getColor() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
