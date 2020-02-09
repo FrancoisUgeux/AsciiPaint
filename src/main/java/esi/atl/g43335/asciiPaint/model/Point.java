@@ -31,9 +31,16 @@ public class Point {
         x += dx;
         y += dy;
     }
-    
-    double distanceTo(Point other){
-        return ((this.x - other.x)+(this.y - other.y));
+
+    public double distanceTo(Point other) {
+        double dx = other.x - x;
+        double dy = other.y - y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
     }
 
 }
