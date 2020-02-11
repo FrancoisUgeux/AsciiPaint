@@ -1,4 +1,4 @@
-package esi.atl.g43335.asciiPaint.controller;
+package esi.atl.g43335.asciiPaint.view;
 
 import esi.atl.g43335.asciiPaint.model.Circle;
 import esi.atl.g43335.asciiPaint.model.Drawing;
@@ -42,6 +42,24 @@ public class AsciiPaint {
 
     public void newSquare(int x, int y, double width, double height, char color) {
         Shape shape = new Square(new Point(x, y), width, height, color);
+    }
+    
+        public String asAscii(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("");
+        for(int i = 0; i < this.drawing.getWidth(); i++){
+            for(int j = 0; j < this.drawing.getHeight(); j++){
+                if(this.drawing.getShapeAt(new Point(i, j)) == null){
+                    builder.append(" ");
+                }else{
+                    builder.append(this.drawing.getShapeAt(new Point(i, j)).getColor());
+                }
+                if(j == this.drawing.getHeight() - 1){
+                    builder.append("\n");
+                }
+            }
+        }
+        return builder.toString();
     }
 
 }
