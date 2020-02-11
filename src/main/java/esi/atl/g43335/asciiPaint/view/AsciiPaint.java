@@ -15,8 +15,8 @@ public class AsciiPaint {
 
     private Drawing drawing;
 
-    public AsciiPaint(int width, int height) {
-        if (width <= 0 || height <= 0) {
+    public AsciiPaint(int height, int width) {
+        if (height <= 0 || width <= 0) {
             throw new IllegalArgumentException("width and height must be above 0");
         }
         this.drawing = new Drawing(width, height);

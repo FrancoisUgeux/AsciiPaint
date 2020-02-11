@@ -10,7 +10,7 @@ import esi.atl.g43335.asciiPaint.view.View;
 public class main {
 
     public static void main(String[] args) {
-        AsciiPaint paint = new AsciiPaint(10, 20);
+        AsciiPaint paint = new AsciiPaint(20, 50);
         View view = new View();
         Application app = new Application(view, paint);
         app.start();
