@@ -40,8 +40,8 @@ public class AsciiPaint {
         drawing.addShape(shape);
     }
 
-    public void newSquare(int x, int y, double width, double height, char color) {
-        Shape shape = new Square(new Point(x, y), width, height, color);
+    public void newSquare(int x, int y,  double side, char color) {
+        Shape shape = new Square(new Point(x, y), side, color);
     }
     
         public String asAscii(){
