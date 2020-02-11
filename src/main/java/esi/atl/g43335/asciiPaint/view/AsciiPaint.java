@@ -42,6 +42,7 @@ public class AsciiPaint {
 
     public void newSquare(int x, int y,  double side, char color) {
         Shape shape = new Square(new Point(x, y), side, color);
+        drawing.addShape(shape);
     }
     
         public String asAscii(){
