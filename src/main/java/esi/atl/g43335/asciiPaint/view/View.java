@@ -90,4 +90,15 @@ public class View {
     public void completedShape() {
         System.out.println("Shape added you can now show it or add a new one");
     }
+    
+    public String asAscii(AsciiPaint ascii){
+        StringBuilder string = new StringBuilder();
+        for(int i = 0;i <ascii.getWidth();i++){
+            for(int j = 0; j < ascii.getHeight();j++){
+                string.append(ascii.getColor(i,j)).append(" ");
+            }
+            string.append("\n");
+        }
+        return string.toString();
+    }
 }

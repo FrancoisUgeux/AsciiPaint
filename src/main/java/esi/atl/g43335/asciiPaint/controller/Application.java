@@ -22,7 +22,7 @@ public class Application {
         view.initialize();
         while (!isOver) {
             view.displayHelp();
-            String commands = view.askCommand().trim();
+            String commands = view.askCommand().toLowerCase().trim();
             String[] param = commands.split(" ");
             String command = param[0];
             if (command.equals("quit")) {
@@ -30,7 +30,7 @@ public class Application {
                 view.quit();
                 isOver = true;
             } else if (command.equals("show")) {
-                System.out.println(paint.asAscii());
+                System.out.println(view.asAscii(paint));
             } else if (command.equals("add")) {
                 if (param[1].equals("circle")) {
                     paint.newCircle(view.askX(), view.askY(), view.askRadius(), view.askColor());

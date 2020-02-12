@@ -51,4 +51,13 @@ public class Drawing {
         }
         return shape;
     }
+
+    public char getColoredShape(Point point) {
+        for (Shape shape : shapes) {
+            if(shape.isInside(point)){
+                return shape.getColor();
+            }
+        }
+        return ' ';
+    }
 }

@@ -40,27 +40,20 @@ public class AsciiPaint {
         drawing.addShape(shape);
     }
 
-    public void newSquare(int x, int y,  double side, char color) {
+    public void newSquare(int x, int y, double side, char color) {
         Shape shape = new Square(new Point(x, y), side, color);
         drawing.addShape(shape);
     }
-    
-        public String asAscii(){
-        StringBuilder builder = new StringBuilder();
-        builder.append("");
-        for(int i = 0; i < this.drawing.getWidth(); i++){
-            for(int j = 0; j < this.drawing.getHeight(); j++){
-                if(this.drawing.getShapeAt(new Point(i, j)) == null){
-                    builder.append(" ");
-                }else{
-                    builder.append(this.drawing.getShapeAt(new Point(i, j)).getColor());
-                }
-                if(j == this.drawing.getHeight() - 1){
-                    builder.append("\n");
-                }
-            }
-        }
-        return builder.toString();
+
+    int getWidth() {
+        return drawing.getWidth();
     }
 
+    int getHeight() {
+        return drawing.getHeight();
+    }
+
+    char getColor(int x, int y) {
+        return drawing.getColoredShape(new Point(x,y));
+    }
 }
