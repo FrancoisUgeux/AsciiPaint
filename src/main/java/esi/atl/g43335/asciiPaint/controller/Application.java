@@ -20,8 +20,8 @@ public class Application {
     public void start() {
         boolean isOver = false;
         view.initialize();
+        view.displayHelp();
         while (!isOver) {
-            view.displayHelp();
             String commands = view.askCommand().toLowerCase().trim();
             String[] param = commands.split(" ");
             String command = param[0];
@@ -60,6 +60,8 @@ public class Application {
                 paint.removeShape(Integer.parseInt(param[1]));
             } else if (command.equals("list")){
                 view.list(paint.getDrawing().getShapes());
+            } else if(command.equals("help")){
+                view.displayHelp();
             }
         }
     }

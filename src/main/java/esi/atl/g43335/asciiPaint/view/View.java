@@ -40,6 +40,8 @@ public class View {
         System.out.println("group shapeNbrInList1 shapeNbrInList2: create a group with the shapes selected");
         System.out.println("show: display the shapes already added");
         System.out.println("remove shapeNbrInList: remove the chosen shape");
+        System.out.println("list: show the list of added shapes");
+        System.out.println("help : show this menu again");
         System.out.println("quit: kill me :( (as a badly writted program "
                 + "i have feelings too!)");
         System.out.println(" ");
@@ -76,13 +78,13 @@ public class View {
         int i = 0;
         for (Shape shape : shapes) {
             if (shape.toString().contains("Circle")) {
-                System.out.println("n°: " + i + "is a circle of color: " + shape.getColor());
+                System.out.println("n°: " + i + " is a circle of color: " + shape.getColor());
             } else if (shape.toString().contains("Rectangle")) {
-                System.out.println("n°: " + i + "is a rectangle of color: " + shape.getColor());
+                System.out.println("n°: " + i + " is a rectangle of color: " + shape.getColor());
             } else if (shape.toString().contains("Square")) {
-                System.out.println("n°: " + i + "is a square of color: " + shape.getColor());
+                System.out.println("n°: " + i + " is a square of color: " + shape.getColor());
             } else if (shape.toString().contains("sine")) {
-                System.out.println("n°: " + i + "is a line of color: " + shape.getColor());
+                System.out.println("n°: " + i + " is a line of color: " + shape.getColor());
             }
             i++;
         }
