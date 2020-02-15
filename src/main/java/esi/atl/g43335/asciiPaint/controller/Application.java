@@ -47,11 +47,17 @@ public class Application {
                             Double.parseDouble(param[4]), param[5].charAt(0));
                     view.completedShape();
                 }
+                if (param[1].equals("line")) {
+                    paint.newLine(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
+                            Integer.parseInt(param[4]), Integer.parseInt(param[5]), param[6].charAt(0));
+                }
             } else if (command.equals("move")) {
                 paint.moveShapeAt(Integer.parseInt(param[1]), Integer.parseInt(param[2]),
                         Integer.parseInt(param[3]), Integer.parseInt(param[4]));
             } else if (command.equals("group")) {
                 paint.newGroup(Integer.parseInt(param[1]), Integer.parseInt(param[2]));
+            } else if (command.equals("remove")){
+                paint.removeShape(Integer.parseInt(param[1]));
             }
         }
     }

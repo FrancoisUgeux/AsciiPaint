@@ -34,8 +34,10 @@ public class View {
                 + "add a new rectangle");
         System.out.println("add circle, x-axis, y-axis, radius, color: add a new circle");
         System.out.println("add square, x-axis, y-axis, side, color: add a new square");
+        System.out.println("move x-axis, y-axis, deltaX, deltaY: move a point to the chosen delta");
+        System.out.println("group shapeNbrInList1 shapeNbrInList2: create a group with the shapes selected");
         System.out.println("show: display the shapes already added");
-        System.out.println("quit: kill me :( (has a badly writted program "
+        System.out.println("quit: kill me :( (as a badly writted program "
                 + "i have feelings too!)");
         System.out.println(" ");
     }
@@ -55,12 +57,12 @@ public class View {
         System.out.println(" ");
         System.out.println("Shape added you can now show it or add a new one");
     }
-    
-    public String asAscii(AsciiPaint ascii){
+
+    public String asAscii(AsciiPaint ascii) {
         StringBuilder string = new StringBuilder();
-        for(int i = 0;i <ascii.getWidth();i++){
-            for(int j = 0; j < ascii.getHeight();j++){
-                string.append(ascii.getColor(i,j)).append(" ");
+        for (int i = 0; i < ascii.getHeight(); i++) {
+            for (int j = 0; j < ascii.getWidth(); j++) {
+                string.append(ascii.getColor(i, j)).append(" ");
             }
             string.append("\n");
         }

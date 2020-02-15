@@ -3,6 +3,7 @@ package esi.atl.g43335.asciiPaint.view;
 import esi.atl.g43335.asciiPaint.model.Circle;
 import esi.atl.g43335.asciiPaint.model.Drawing;
 import esi.atl.g43335.asciiPaint.model.Group;
+import esi.atl.g43335.asciiPaint.model.Line;
 import esi.atl.g43335.asciiPaint.model.Point;
 import esi.atl.g43335.asciiPaint.model.Rectangle;
 import esi.atl.g43335.asciiPaint.model.Shape;
@@ -47,6 +48,11 @@ public class AsciiPaint {
         Shape shape = new Square(new Point(x, y), side, color);
         drawing.addShape(shape);
     }
+    
+    public void newLine(int x1, int y1, int x2, int y2, char color){
+        Shape shape = new Line(new Point(x1, x2), new Point(x2, y2), color);
+        drawing.addShape(shape);
+    }
 
     int getWidth() {
         return drawing.getWidth();
@@ -66,6 +72,9 @@ public class AsciiPaint {
     
     public void removeShapeAt(int x, int y){
         drawing.removeShapeAt(new Point(x,y));
+    }
+    public void removeShape(int shape){
+        drawing.getShapes().remove(shape);
     }
     
     public void newGroup(int shapeIndex1, int shapeIndex2){
