@@ -48,8 +48,8 @@ public class AsciiPaint {
         Shape shape = new Square(new Point(x, y), side, color);
         drawing.addShape(shape);
     }
-    
-    public void newLine(int x1, int y1, int x2, int y2, char color){
+
+    public void newLine(int x1, int y1, int x2, int y2, char color) {
         Shape shape = new Line(new Point(x1, x2), new Point(x2, y2), color);
         drawing.addShape(shape);
     }
@@ -63,27 +63,28 @@ public class AsciiPaint {
     }
 
     char getColor(int x, int y) {
-        return drawing.getColoredShape(new Point(x,y));
+        return drawing.getColoredShape(new Point(x, y));
     }
-    
-    public void moveShapeAt(int x,int y,int dx, int dy){
-        drawing.moveShapeAt(new Point(x,y),dx, dy);
+
+    public void moveShapeAt(int x, int y, int dx, int dy) {
+        drawing.moveShapeAt(new Point(x, y), dx, dy);
     }
-    
-    public void removeShapeAt(int x, int y){
-        drawing.removeShapeAt(new Point(x,y));
+
+    public void removeShapeAt(int x, int y) {
+        drawing.removeShapeAt(new Point(x, y));
     }
-    public void removeShape(int shape){
+
+    public void removeShape(int shape) {
         drawing.getShapes().remove(shape);
     }
-    
-    public void newGroup(int shapeIndex1, int shapeIndex2){
+
+    public void newGroup(int shapeIndex1, int shapeIndex2) {
         List<Shape> shapes = new ArrayList<>();
         Shape shape1 = drawing.getShapeByIndex(shapeIndex1);
         Shape shape2 = drawing.getShapeByIndex(shapeIndex2);
         shapes.add(shape1);
         shapes.add(shape2);
-        Group group = new Group(shapes,shape1.getColor());
+        Group group = new Group(shapes, shape1.getColor());
         drawing.addShape(group);
         drawing.getShapes().remove(shape1);
         drawing.getShapes().remove(shape2);

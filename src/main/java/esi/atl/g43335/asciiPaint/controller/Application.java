@@ -58,6 +58,8 @@ public class Application {
                 paint.newGroup(Integer.parseInt(param[1]), Integer.parseInt(param[2]));
             } else if (command.equals("remove")){
                 paint.removeShape(Integer.parseInt(param[1]));
+            } else if (command.equals("list")){
+                view.list(paint.getDrawing().getShapes());
             }
         }
     }

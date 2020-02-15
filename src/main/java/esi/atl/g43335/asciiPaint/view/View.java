@@ -1,5 +1,7 @@
 package esi.atl.g43335.asciiPaint.view;
 
+import esi.atl.g43335.asciiPaint.model.Shape;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -37,6 +39,7 @@ public class View {
         System.out.println("move x-axis, y-axis, deltaX, deltaY: move a point to the chosen delta");
         System.out.println("group shapeNbrInList1 shapeNbrInList2: create a group with the shapes selected");
         System.out.println("show: display the shapes already added");
+        System.out.println("remove shapeNbrInList: remove the chosen shape");
         System.out.println("quit: kill me :( (as a badly writted program "
                 + "i have feelings too!)");
         System.out.println(" ");
@@ -67,5 +70,21 @@ public class View {
             string.append("\n");
         }
         return string.toString();
+    }
+
+    public void list(List<Shape> shapes) {
+        int i = 0;
+        for (Shape shape : shapes) {
+            if (shape.toString().contains("Circle")) {
+                System.out.println("n°: " + i + "is a circle of color: " + shape.getColor());
+            } else if (shape.toString().contains("Rectangle")) {
+                System.out.println("n°: " + i + "is a rectangle of color: " + shape.getColor());
+            } else if (shape.toString().contains("Square")) {
+                System.out.println("n°: " + i + "is a square of color: " + shape.getColor());
+            } else if (shape.toString().contains("sine")) {
+                System.out.println("n°: " + i + "is a line of color: " + shape.getColor());
+            }
+            i++;
+        }
     }
 }
