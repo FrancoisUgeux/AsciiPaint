@@ -33,16 +33,18 @@ public class Application {
                 System.out.println(view.asAscii(paint));
             } else if (command.equals("add")) {
                 if (param[1].equals("circle")) {
-                    paint.newCircle(view.askX(), view.askY(), view.askRadius(), view.askColor());
+                    paint.newCircle(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
+                            Double.parseDouble(param[4]), param[5].charAt(0));
                     view.completedShape();
                 }
                 if (param[1].equals("rectangle")) {
-                    paint.newRectangle(view.askX(), view.askY(), view.askWidth(),
-                            view.askHeight(), view.askColor());
+                    paint.newRectangle(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
+                            Double.parseDouble(param[4]), Double.parseDouble(param[5]), param[6].charAt(0));
                     view.completedShape();
                 }
                 if (param[1].equals("square")) {
-                    paint.newSquare(view.askX(), view.askY(), view.askSide(), view.askColor());
+                    paint.newSquare(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
+                            Double.parseDouble(param[4]), param[5].charAt(0));
                     view.completedShape();
                 }
             }
