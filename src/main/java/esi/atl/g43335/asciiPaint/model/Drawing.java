@@ -54,10 +54,30 @@ public class Drawing {
 
     public char getColoredShape(Point point) {
         for (Shape shape : shapes) {
-            if(shape.isInside(point)){
+            if (shape.isInside(point)) {
                 return shape.getColor();
             }
         }
         return ' ';
+    }
+
+    public void moveShapeAt(Point point, int dx, int dy) {
+        for (Shape shape : shapes) {
+            if (shape.isInside(point)) {
+                shape.move(dx, dy);
+            }
+        }
+    }
+
+    public void removeShapeAt(Point point) {
+        for (Shape shape : shapes) {
+            if (shape.isInside(point)) {
+                shapes.remove(shape);
+            }
+        }
+    }
+
+    public Shape getShapeByIndex(int shapeIndex) {
+        return shapes.get(shapeIndex);
     }
 }

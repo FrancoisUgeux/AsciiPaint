@@ -2,10 +2,13 @@ package esi.atl.g43335.asciiPaint.view;
 
 import esi.atl.g43335.asciiPaint.model.Circle;
 import esi.atl.g43335.asciiPaint.model.Drawing;
+import esi.atl.g43335.asciiPaint.model.Group;
 import esi.atl.g43335.asciiPaint.model.Point;
 import esi.atl.g43335.asciiPaint.model.Rectangle;
 import esi.atl.g43335.asciiPaint.model.Shape;
 import esi.atl.g43335.asciiPaint.model.Square;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -55,5 +58,25 @@ public class AsciiPaint {
 
     char getColor(int x, int y) {
         return drawing.getColoredShape(new Point(x,y));
+    }
+    
+    public void moveShapeAt(int x,int y,int dx, int dy){
+        drawing.moveShapeAt(new Point(x,y),dx, dy);
+    }
+    
+    public void removeShapeAt(int x, int y){
+        drawing.removeShapeAt(new Point(x,y));
+    }
+    
+    public void newGroup(int shapeIndex1, int shapeIndex2){
+        List<Shape> shapes = new ArrayList<>();
+        Shape shape1 = drawing.getShapeByIndex(shapeIndex1);
+        Shape shape2 = drawing.getShapeByIndex(shapeIndex2);
+        shapes.add(shape1);
+        shapes.add(shape2);
+        Group group = new Group(shapes,shape1.getColor());
+        drawing.addShape(group);
+        drawing.getShapes().remove(shape1);
+        drawing.getShapes().remove(shape2);
     }
 }
