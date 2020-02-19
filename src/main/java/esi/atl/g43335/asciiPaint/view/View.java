@@ -38,17 +38,17 @@ public class View {
         System.out.println("add square, x-axis, y-axis, side, color: add a new square");
         System.out.println("move x-axis, y-axis, deltaX, deltaY: move a point to the chosen delta");
         System.out.println("group shapeNbrInList1 shapeNbrInList2: create a group with the shapes selected");
-        System.out.println("show: display the shapes already added");
-        System.out.println("remove shapeNbrInList: remove the chosen shape");
-        System.out.println("list: show the list of added shapes");
+        System.out.println("show : display the shapes already added");
+        System.out.println("remove shapeIndex: remove the chosen shape");
+        System.out.println("list : show the list of added shapes");
         System.out.println("help : show this menu again");
-        System.out.println("quit: kill me :( (as a badly writted program "
+        System.out.println("quit : kill me :( (as a badly writted program "
                 + "i have feelings too!)");
         System.out.println(" ");
     }
 
     public String askCommand() {
-        System.out.println("please enter your command(s): ");
+        System.out.println("please enter your command: ");
         return in.nextLine();
     }
 
@@ -56,11 +56,6 @@ public class View {
         System.out.println("Choose a shape to add from the following: "
                 + "rectangle/circle/square");
         return in.next();
-    }
-
-    public void completedShape() {
-        System.out.println(" ");
-        System.out.println("Shape added you can now show it or add a new one");
     }
 
     public String asAscii(AsciiPaint ascii) {

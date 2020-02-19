@@ -35,17 +35,14 @@ public class Application {
                 if (param[1].equals("circle")) {
                     paint.newCircle(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
                             Double.parseDouble(param[4]), param[5].charAt(0));
-                    view.completedShape();
                 }
                 if (param[1].equals("rectangle")) {
                     paint.newRectangle(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
                             Double.parseDouble(param[4]), Double.parseDouble(param[5]), param[6].charAt(0));
-                    view.completedShape();
                 }
                 if (param[1].equals("square")) {
                     paint.newSquare(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
                             Double.parseDouble(param[4]), param[5].charAt(0));
-                    view.completedShape();
                 }
                 if (param[1].equals("line")) {
                     paint.newLine(Integer.parseInt(param[2]), Integer.parseInt(param[3]),
@@ -64,6 +61,8 @@ public class Application {
                 view.displayHelp();
             } else if(command.equals("color")){
                 paint.changeColor(Integer.parseInt(param[1]),param[2].charAt(0));
+            } else if(command.equals("load")){
+                
             }
         }
     }

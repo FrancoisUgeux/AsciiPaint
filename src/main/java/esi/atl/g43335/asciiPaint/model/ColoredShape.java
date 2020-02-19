@@ -16,6 +16,7 @@ public abstract class ColoredShape implements Shape{
         return color;
     }
     
+    @Override
     public void setColor(char color){
         this.color = color;
     }
