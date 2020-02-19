@@ -27,8 +27,7 @@ public class Line extends ColoredShape {
         return ((((p1.getY() - p2.getY()) * p.getX() + (p2.getX() - p1.getX())
                 * p.getY() + p1.getX() * p2.getY() - p2.getX() * p1.getY())
                 / (Math.sqrt(Math.pow((p2.getX() - p1.getX()), 2))
-                + Math.pow((p2.getY() - p1.getY()), 2))) == 0 && p.getX()
-                <= p2.getX() && p.getY() <= p2.getY() && p.getX() <= p1.getX() && p.getY() <= p1.getY());
+                + Math.pow((p2.getY() - p1.getY()), 2))) == 0);
     }
 
 }

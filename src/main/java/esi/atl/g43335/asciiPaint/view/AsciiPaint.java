@@ -89,4 +89,8 @@ public class AsciiPaint {
         drawing.getShapes().remove(shape1);
         drawing.getShapes().remove(shape2);
     }
+
+    public void changeColor(int shapeIndex, char color) {
+        drawing.getShapeByIndex(shapeIndex).setColor(color);
+    }
 }

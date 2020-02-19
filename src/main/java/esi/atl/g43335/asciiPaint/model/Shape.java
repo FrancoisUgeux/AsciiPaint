@@ -10,4 +10,6 @@ public interface Shape {
     boolean isInside(Point p);
     
     char getColor();
+
+    public void setColor(char color);
 }

@@ -62,6 +62,8 @@ public class Application {
                 view.list(paint.getDrawing().getShapes());
             } else if(command.equals("help")){
                 view.displayHelp();
+            } else if(command.equals("color")){
+                paint.changeColor(Integer.parseInt(param[1]),param[2].charAt(0));
             }
         }
     }
