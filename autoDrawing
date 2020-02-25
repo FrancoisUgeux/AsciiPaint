@@ -1,5 +1,36 @@
-speed 2000
-add rectangle 5 5 3 4 g
-add circle 10 10 3 f
-move 1 4 4
+speed 500
+add rectangle 10 10 4 2 r
+add rectangle 10 14 4 2 r
+group 0 1
+add circle 12 12 7 y
+speed 800
+add rectangle 40 10 2 2 b
+speed 300
+add rectangle 40 14 2 2 b
+group 2 3
+add rectangle 35 10 12 18 c
+speed 500
+speed 400
+move 2 0 4
+move 3 0 4
+move 0 6 0
+move 1 6 0
+move 2 0 3
+move 3 0 3
+move 0 4 1
+move 1 6 2
+move 0 2 1
+move 2 0 6
+move 3 0 6
+move 0 4 4
+move 1 7 7
+move 0 3 3
+speed 200
+color 2 p
+color 2 b
+color 2 p
+color 2 b
+color 2 p
+color 2 b
+color 3 g
 eof
