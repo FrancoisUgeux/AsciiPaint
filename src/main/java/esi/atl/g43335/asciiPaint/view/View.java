@@ -38,10 +38,12 @@ public class View {
         System.out.println("add circle, x-axis, y-axis, radius, color: add a new circle");
         System.out.println("add square, x-axis, y-axis, side, color: add a new square");
         System.out.println("move x-axis, y-axis, deltaX, deltaY: move a point to the chosen delta");
-        System.out.println("group shapeNbrInList1 shapeNbrInList2: create a group with the shapes selected");
+        System.out.println("group shapeNbrInList1 shapeNbrInList2 color: create a group with the shapes selected");
         System.out.println("show : display the shapes already added");
         System.out.println("remove shapeIndex: remove the chosen shape");
         System.out.println("list : show the list of added shapes");
+        System.out.println("undo : undo the last operation");
+        System.out.println("redo : reverse the last undo");
         System.out.println("help : show this menu again");
         System.out.println("quit : kill me :( (as a badly writted program "
                 + "i have feelings too!)");
@@ -81,7 +83,7 @@ public class View {
     }
 
     public void setInput(InputStream in) {
-        Scanner scanner = new Scanner(in);
+        scanner = new Scanner(in);
     }
     
     public void show(AsciiPaint paint){

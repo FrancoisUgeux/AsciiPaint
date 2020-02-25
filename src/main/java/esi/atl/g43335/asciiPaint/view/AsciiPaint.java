@@ -2,11 +2,6 @@ package esi.atl.g43335.asciiPaint.view;
 
 import esi.atl.g43335.asciiPaint.controller.Application;
 import esi.atl.g43335.asciiPaint.model.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +13,6 @@ import java.util.logging.Logger;
 public class AsciiPaint {
 
     private Drawing drawing;
-    private View view;
     private int speed = 0;
     private Stack<Commands> undoStack;
     private Stack<Commands> redoStack;
@@ -84,8 +78,12 @@ public class AsciiPaint {
         return drawing.getColoredShape(new Point(x, y));
     }
 
-    public void moveShapeAt(int x, int y, int dx, int dy) {
-        drawing.moveShapeAt(new Point(x, y), dx, dy);
+    public void moveShape(int index, int dx, int dy) {
+        Shape shape = drawing.getShapeByIndex(index);
+        Commands move = new MoveCommand(shape, dx, dy);
+        move.execute();
+        undoStack.push(move);
+        redoStack.clear();
     }
 
     public void removeShapeAt(int x, int y) {
@@ -99,23 +97,18 @@ public class AsciiPaint {
     public void newGroup(int shapeIndex1, int shapeIndex2, char color) {
         Shape shape1 = drawing.getShapeByIndex(shapeIndex1);
         Shape shape2 = drawing.getShapeByIndex(shapeIndex2);
-        Commands add = new GroupCommand(drawing, shape1, shape2, color);
-        add.execute();
-        undoStack.push(add);
+        Commands group = new GroupCommand(drawing, shape1, shape2, color);
+        group.execute();
+        undoStack.push(group);
         redoStack.clear();
     }
 
     public void changeColor(int shapeIndex, char color) {
-        drawing.getShapeByIndex(shapeIndex).setColor(color);
-    }
-
-    public void loadFile(String file) {
-        try {
-            InputStream in = new FileInputStream(file);
-            view.setInput(in);
-        } catch (FileNotFoundException ex) {
-            System.err.println("File not found" + file);
-        }
+        Shape shape = drawing.getShapeByIndex(shapeIndex);
+        Commands colors = new ColorCommand(shape, color);
+        colors.execute();
+        undoStack.push(colors);
+        redoStack.clear();
     }
 
     public void setSpeed(String string) {
@@ -128,5 +121,13 @@ public class AsciiPaint {
         } catch (InterruptedException ex) {
             Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void undo() {
+        undoStack.pop().unexecute();
+    }
+
+    public void redo() {
+        redoStack.pop().execute();
     }
 }

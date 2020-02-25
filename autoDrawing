@@ -1,0 +1,4 @@
+add rectangle 5 5 3 4 g
+show
+eof
+quit
