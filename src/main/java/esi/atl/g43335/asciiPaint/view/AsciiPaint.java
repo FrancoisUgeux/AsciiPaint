@@ -1,15 +1,15 @@
 package esi.atl.g43335.asciiPaint.view;
 
-import esi.atl.g43335.asciiPaint.model.Circle;
-import esi.atl.g43335.asciiPaint.model.Drawing;
-import esi.atl.g43335.asciiPaint.model.Group;
-import esi.atl.g43335.asciiPaint.model.Line;
-import esi.atl.g43335.asciiPaint.model.Point;
-import esi.atl.g43335.asciiPaint.model.Rectangle;
-import esi.atl.g43335.asciiPaint.model.Shape;
-import esi.atl.g43335.asciiPaint.model.Square;
+import esi.atl.g43335.asciiPaint.controller.Application;
+import esi.atl.g43335.asciiPaint.model.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,6 +18,11 @@ import java.util.List;
 public class AsciiPaint {
 
     private Drawing drawing;
+    private View view;
+    private int speed = 0;
+    private Stack<Commands> undoStack;
+    private Stack<Commands> redoStack;
+    
 
     public AsciiPaint(int height, int width) {
         if (height <= 0 || width <= 0) {
@@ -62,6 +67,11 @@ public class AsciiPaint {
         return drawing.getHeight();
     }
 
+    public int getSpeed() {
+        return speed;
+    }
+    
+
     char getColor(int x, int y) {
         return drawing.getColoredShape(new Point(x, y));
     }
@@ -92,5 +102,26 @@ public class AsciiPaint {
 
     public void changeColor(int shapeIndex, char color) {
         drawing.getShapeByIndex(shapeIndex).setColor(color);
+    }
+
+    public void loadFile(String file) {
+        try {
+            InputStream in = new FileInputStream(file);
+            view.setInput(in);
+        } catch (FileNotFoundException ex) {
+            System.err.println("File not found" + file);
+        }
+    }
+
+    public void setSpeed(String string) {
+        this.speed = Integer.parseInt(string);
+    }
+
+    public void pause() {
+        try {
+            Thread.sleep(speed);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

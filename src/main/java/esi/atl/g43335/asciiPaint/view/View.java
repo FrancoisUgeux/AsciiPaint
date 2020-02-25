@@ -1,6 +1,7 @@
 package esi.atl.g43335.asciiPaint.view;
 
 import esi.atl.g43335.asciiPaint.model.Shape;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,10 +11,10 @@ import java.util.Scanner;
  */
 public class View {
 
-    private Scanner in;
+    private Scanner scanner = new Scanner(System.in);
 
     public View() {
-        this.in = new Scanner(System.in);
+        this.scanner = new Scanner(System.in);
     }
 
     public void initialize() {
@@ -49,15 +50,9 @@ public class View {
 
     public String askCommand() {
         System.out.println("please enter your command: ");
-        return in.nextLine();
+        return scanner.nextLine();
     }
-
-    public String askShape() {
-        System.out.println("Choose a shape to add from the following: "
-                + "rectangle/circle/square");
-        return in.next();
-    }
-
+    
     public String asAscii(AsciiPaint ascii) {
         StringBuilder string = new StringBuilder();
         for (int i = 0; i < ascii.getHeight(); i++) {
@@ -83,5 +78,13 @@ public class View {
             }
             i++;
         }
+    }
+
+    public void setInput(InputStream in) {
+        Scanner scanner = new Scanner(in);
+    }
+    
+    public void show(AsciiPaint paint){
+        System.out.println(asAscii(paint));
     }
 }

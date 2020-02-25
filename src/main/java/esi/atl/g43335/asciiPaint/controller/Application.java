@@ -53,17 +53,27 @@ public class Application {
                         Integer.parseInt(param[3]), Integer.parseInt(param[4]));
             } else if (command.equals("group")) {
                 paint.newGroup(Integer.parseInt(param[1]), Integer.parseInt(param[2]));
-            } else if (command.equals("remove")){
+            } else if (command.equals("remove")) {
                 paint.removeShape(Integer.parseInt(param[1]));
-            } else if (command.equals("list")){
+            } else if (command.equals("list")) {
                 view.list(paint.getDrawing().getShapes());
-            } else if(command.equals("help")){
+            } else if (command.equals("help")) {
                 view.displayHelp();
-            } else if(command.equals("color")){
-                paint.changeColor(Integer.parseInt(param[1]),param[2].charAt(0));
-            } else if(command.equals("load")){
+            } else if (command.equals("color")) {
+                paint.changeColor(Integer.parseInt(param[1]), param[2].charAt(0));
+            } else if (command.equals("load")) {
+                paint.loadFile(param[1]);
+            } else if (command.equals("eof")) {
+                view.setInput(System.in);
+            } else if (command.equals("speed")) {
+                paint.setSpeed(param[1]);
+            } else if (command.equals("undo")){
+                
+            } else if (command.equals("redo")){
                 
             }
+            paint.pause();
+            if (paint.getSpeed() > 0)view.show(paint);
         }
     }
 }

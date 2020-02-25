@@ -76,6 +76,10 @@ public class Drawing {
             }
         }
     }
+    
+    void remove(Shape shape){
+        shapes.remove(shape);
+    }
 
     public Shape getShapeByIndex(int shapeIndex) {
         return shapes.get(shapeIndex);
