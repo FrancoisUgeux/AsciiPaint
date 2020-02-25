@@ -52,7 +52,7 @@ public class Application {
                 paint.moveShapeAt(Integer.parseInt(param[1]), Integer.parseInt(param[2]),
                         Integer.parseInt(param[3]), Integer.parseInt(param[4]));
             } else if (command.equals("group")) {
-                paint.newGroup(Integer.parseInt(param[1]), Integer.parseInt(param[2]));
+                paint.newGroup(Integer.parseInt(param[1]), Integer.parseInt(param[2]),param[3].charAt(0));
             } else if (command.equals("remove")) {
                 paint.removeShape(Integer.parseInt(param[1]));
             } else if (command.equals("list")) {

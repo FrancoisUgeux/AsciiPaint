@@ -22,13 +22,14 @@ public class AsciiPaint {
     private int speed = 0;
     private Stack<Commands> undoStack;
     private Stack<Commands> redoStack;
-    
 
     public AsciiPaint(int height, int width) {
         if (height <= 0 || width <= 0) {
             throw new IllegalArgumentException("width and height must be above 0");
         }
         this.drawing = new Drawing(width, height);
+        undoStack = new Stack<>();
+        redoStack = new Stack<>();
     }
 
     public AsciiPaint() {
@@ -40,23 +41,31 @@ public class AsciiPaint {
     }
 
     public void newCircle(int x, int y, double radius, char color) {
-        Shape shape = new Circle(new Point(x, y), radius, color);
-        drawing.addShape(shape);
+        Commands add = new AddCommand(drawing, new Circle(new Point(x, y), radius, color));
+        add.execute();
+        undoStack.push(add);
+        redoStack.clear();
     }
 
     public void newRectangle(int x, int y, double width, double height, char color) {
-        Shape shape = new Rectangle(new Point(x, y), width, height, color);
-        drawing.addShape(shape);
+        Commands add = new AddCommand(drawing, new Rectangle(new Point(x, y), width, height, color));
+        add.execute();
+        undoStack.push(add);
+        redoStack.clear();
     }
 
     public void newSquare(int x, int y, double side, char color) {
-        Shape shape = new Square(new Point(x, y), side, color);
-        drawing.addShape(shape);
+        Commands add = new AddCommand(drawing, new Square(new Point(x, y), side, color));
+        add.execute();
+        undoStack.push(add);
+        redoStack.clear();
     }
 
     public void newLine(int x1, int y1, int x2, int y2, char color) {
-        Shape shape = new Line(new Point(x1, x2), new Point(x2, y2), color);
-        drawing.addShape(shape);
+        Commands add = new AddCommand(drawing, new Line(new Point(x1, x2), new Point(x2, y2), color));
+        add.execute();
+        undoStack.push(add);
+        redoStack.clear();
     }
 
     int getWidth() {
@@ -70,7 +79,6 @@ public class AsciiPaint {
     public int getSpeed() {
         return speed;
     }
-    
 
     char getColor(int x, int y) {
         return drawing.getColoredShape(new Point(x, y));
@@ -88,16 +96,13 @@ public class AsciiPaint {
         drawing.getShapes().remove(shape);
     }
 
-    public void newGroup(int shapeIndex1, int shapeIndex2) {
-        List<Shape> shapes = new ArrayList<>();
+    public void newGroup(int shapeIndex1, int shapeIndex2, char color) {
         Shape shape1 = drawing.getShapeByIndex(shapeIndex1);
         Shape shape2 = drawing.getShapeByIndex(shapeIndex2);
-        shapes.add(shape1);
-        shapes.add(shape2);
-        Group group = new Group(shapes, shape1.getColor());
-        drawing.addShape(group);
-        drawing.getShapes().remove(shape1);
-        drawing.getShapes().remove(shape2);
+        Commands add = new GroupCommand(drawing, shape1, shape2, color);
+        add.execute();
+        undoStack.push(add);
+        redoStack.clear();
     }
 
     public void changeColor(int shapeIndex, char color) {
