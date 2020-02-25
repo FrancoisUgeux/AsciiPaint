@@ -33,4 +33,31 @@ color 2 b
 color 2 p
 color 2 b
 color 3 g
+speed 400
+remove 2
+remove 2
+speed 0
+move 0 -10 0
+move 1 -10 2
+speed 300
+add circle 8 15 1 b
+add circle 8 15 2 p
+add circle 8 15 3 r
+add circle 8 15 4 y
+undo
+undo
+undo
+undo
+redo
+redo
+redo
+redo
+undo
+undo
+undo
+undo
+redo
+redo
+redo
+redo
 eof

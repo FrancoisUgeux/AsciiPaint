@@ -1,6 +1,7 @@
 package esi.atl.g43335.asciiPaint.model;
 
 import java.lang.Math;
+import java.util.Objects;
 
 /**
  *
@@ -15,6 +16,35 @@ public class Line extends ColoredShape {
         super(color);
         this.p1 = point1;
         this.p2 = point2;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.p1);
+        hash = 97 * hash + Objects.hashCode(this.p2);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Line other = (Line) obj;
+        if (!Objects.equals(this.p1, other.p1)) {
+            return false;
+        }
+        if (!Objects.equals(this.p2, other.p2)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
