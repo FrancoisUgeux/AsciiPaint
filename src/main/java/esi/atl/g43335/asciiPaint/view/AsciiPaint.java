@@ -74,8 +74,25 @@ public class AsciiPaint {
         return speed;
     }
 
-    char getColor(int x, int y) {
-        return drawing.getColoredShape(new Point(x, y));
+    public String getColor(int x, int y) {
+        //return drawing.getColoredShape(new Point(x, y));
+        Point p = new Point(x, y);
+            switch (drawing.getColoredShape(p)) {
+            case 'r':
+                return "\u001B[41m";//red
+            case 'g':
+                return "\u001B[42m";//green
+            case 'b':
+                return "\u001B[44m";//blue
+            case 'y':
+                return "\u001B[43m";//yellow
+            case 'p':
+                return "\u001B[45m";//purple
+            case 'c':
+                return "\u001B[46m";//cyan
+            default:
+                return "\u001B[40m";//black
+        }
     }
 
     public void moveShape(int index, int dx, int dy) {
@@ -90,14 +107,17 @@ public class AsciiPaint {
         drawing.removeShapeAt(new Point(x, y));
     }
 
-    public void removeShape(int shape) {
-        drawing.getShapes().remove(shape);
+    public void removeShape(int shapeIndex) {
+        Commands remove = new RemoveCommand(drawing, drawing.getShapeByIndex(shapeIndex));
+        remove.execute();
+        undoStack.push(remove);
+        redoStack.clear();
     }
 
-    public void newGroup(int shapeIndex1, int shapeIndex2, char color) {
+    public void newGroup(int shapeIndex1, int shapeIndex2) {
         Shape shape1 = drawing.getShapeByIndex(shapeIndex1);
         Shape shape2 = drawing.getShapeByIndex(shapeIndex2);
-        Commands group = new GroupCommand(drawing, shape1, shape2, color);
+        Commands group = new GroupCommand(drawing, shape1, shape2, shape1.getColor());
         group.execute();
         undoStack.push(group);
         redoStack.clear();
@@ -124,6 +144,7 @@ public class AsciiPaint {
     }
 
     public void undo() {
+        redoStack.push(undoStack.peek());
         undoStack.pop().unexecute();
     }
 

@@ -59,7 +59,7 @@ public class Application {
                     paint.moveShape(Integer.parseInt(param[1]), Integer.parseInt(param[2]), Integer.parseInt(param[3]));
                     break;
                 case "group":
-                    paint.newGroup(Integer.parseInt(param[1]), Integer.parseInt(param[2]), param[3].charAt(0));
+                    paint.newGroup(Integer.parseInt(param[1]), Integer.parseInt(param[2]));
                     break;
                 case "remove":
                     paint.removeShape(Integer.parseInt(param[1]));

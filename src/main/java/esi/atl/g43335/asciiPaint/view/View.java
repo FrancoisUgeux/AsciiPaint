@@ -35,14 +35,16 @@ public class View {
         System.out.println(" ");
         System.out.println("add rectangle, x-axis, y-axis, height, width, color: "
                 + "add a new rectangle");
-        System.out.println("add circle, x-axis, y-axis, radius, color: add a new circle");
-        System.out.println("add square, x-axis, y-axis, side, color: add a new square");
-        System.out.println("move x-axis, y-axis, deltaX, deltaY: move a point to the chosen delta");
-        System.out.println("group shapeNbrInList1 shapeNbrInList2 color: create a group with the shapes selected");
+        System.out.println("add circle, x-axis, y-axis radius, color: add a new circle");
+        System.out.println("add square x-axis, y-axis side color: add a new square");
+        System.out.println("move shapeIndex deltaX deltaY: move a shape to the chosen delta");
+        System.out.println("group shapeNbrInList1 shapeNbrInList2 : create a group with the shapes selected");
         System.out.println("show : display the shapes already added");
         System.out.println("remove shapeIndex: remove the chosen shape");
+        System.out.println("'color' shapeIndex color : change the color of the shape");
         System.out.println("list : show the list of added shapes");
         System.out.println("undo : undo the last operation");
+        System.out.println("speed milliseconds: set a pause of the given milliseconds between each commands");
         System.out.println("redo : reverse the last undo");
         System.out.println("help : show this menu again");
         System.out.println("quit : kill me :( (as a badly writted program "
@@ -51,15 +53,15 @@ public class View {
     }
 
     public String askCommand() {
-        System.out.println("please enter your command: ");
+        System.out.println(" # ");
         return scanner.nextLine();
     }
-    
-    public String asAscii(AsciiPaint ascii) {
+
+    public String asAscii(AsciiPaint paint) {
         StringBuilder string = new StringBuilder();
-        for (int i = 0; i < ascii.getHeight(); i++) {
-            for (int j = 0; j < ascii.getWidth(); j++) {
-                string.append(ascii.getColor(i, j)).append(" ");
+        for (int i = 0; i < paint.getHeight(); i++) {
+            for (int j = 0; j < paint.getWidth(); j++) {
+                string.append(paint.getColor(i, j)).append(" ");
             }
             string.append("\n");
         }
@@ -77,6 +79,8 @@ public class View {
                 System.out.println("n°: " + i + " is a square of color: " + shape.getColor());
             } else if (shape.toString().contains("sine")) {
                 System.out.println("n°: " + i + " is a line of color: " + shape.getColor());
+            } else {
+                System.out.println("n°: " + i + " is a group of shape of color" + shape.getColor());
             }
             i++;
         }
@@ -85,8 +89,8 @@ public class View {
     public void setInput(InputStream in) {
         scanner = new Scanner(in);
     }
-    
-    public void show(AsciiPaint paint){
+
+    public void show(AsciiPaint paint) {
         System.out.println(asAscii(paint));
     }
 }
