@@ -1,6 +1,6 @@
 package esi.atl.g43335.asciiPaint.controller;
 
-import esi.atl.g43335.asciiPaint.view.AsciiPaint;
+import esi.atl.g43335.asciiPaint.model.AsciiPaint;
 import esi.atl.g43335.asciiPaint.view.View;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,7 +20,7 @@ public class Application {
         this.paint = paint;
     }
 
-    public void start() {
+    public void start() { // trop long
         boolean isOver = false;
         view.initialize();
         view.displayHelp();

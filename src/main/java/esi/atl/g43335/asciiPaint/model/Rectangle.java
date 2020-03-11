@@ -19,7 +19,7 @@ public class Rectangle extends ColoredShape {
         this.height = height;
     }
 
-    public Point getUpperLeft() {
+    Point getUpperLeft() {
         return upperLeft;
     }
 

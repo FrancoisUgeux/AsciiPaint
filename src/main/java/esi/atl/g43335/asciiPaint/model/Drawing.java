@@ -15,7 +15,8 @@ public class Drawing {
 
     public Drawing(int height, int width) {
         if (width <= 0 || height <= 0) {
-            throw new IllegalArgumentException("height and width must be above 0");
+            throw new IllegalArgumentException("height and width must be above 0: "+
+                    height+" - "+width);
         }
         this.height = height;
         this.width = width;
@@ -25,8 +26,8 @@ public class Drawing {
     public Drawing() {
     }
 
-    public List<Shape> getShapes() {
-        return shapes;
+    public List<Shape> getShapes() { // uniquement pour la liste des shapes
+        return new ArrayList<>(shapes);
     }
 
     public int getHeight() {
@@ -37,11 +38,11 @@ public class Drawing {
         return width;
     }
 
-    public void addShape(Shape shape) {
+    void addShape(Shape shape) {
         shapes.add(shape);
     }
 
-    public Shape getShapeAt(Point p) {
+    Shape getShapeAt(Point p) {
         Shape shape = null;
         for (Shape sh : this.shapes) {
             if (sh.isInside(p)) {
@@ -61,7 +62,7 @@ public class Drawing {
         return ' ';
     }
 
-    public void moveShapeAt(Point point, int dx, int dy) {
+    void moveShapeAt(Point point, int dx, int dy) {
         for (Shape shape : shapes) {
             if (shape.isInside(point)) {
                 shape.move(dx, dy);
@@ -69,10 +70,10 @@ public class Drawing {
         }
     }
 
-    public void removeShapeAt(Point point) {
+    void removeShapeAt(Point point) {
         for (Shape shape : shapes) {
             if (shape.isInside(point)) {
-                shapes.remove(shape);
+                shapes.remove(shape); // tu les retire toutes ?
             }
         }
     }
@@ -81,7 +82,7 @@ public class Drawing {
         shapes.remove(shape);
     }
 
-    public Shape getShapeByIndex(int shapeIndex) {
+    Shape getShapeByIndex(int shapeIndex) {
         return shapes.get(shapeIndex);
     }
 }

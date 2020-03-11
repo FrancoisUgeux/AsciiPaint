@@ -1,4 +1,4 @@
-package esi.atl.g43335.asciiPaint.view;
+package esi.atl.g43335.asciiPaint.model;
 
 import esi.atl.g43335.asciiPaint.controller.Application;
 import esi.atl.g43335.asciiPaint.model.*;
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class AsciiPaint {
 
     private Drawing drawing;
-    private int speed = 0;
+    private int speed = 0; // vue ou controlleur
     private Stack<Commands> undoStack;
     private Stack<Commands> redoStack;
 
@@ -28,6 +28,7 @@ public class AsciiPaint {
 
     public AsciiPaint() {
         this.drawing = new Drawing();
+        // tu n'initialise pas les stack ?
     }
 
     public Drawing getDrawing() {
@@ -62,19 +63,19 @@ public class AsciiPaint {
         redoStack.clear();
     }
 
-    int getWidth() {
+    public int getWidth() {
         return drawing.getWidth();
     }
 
-    int getHeight() {
+    public int getHeight() {
         return drawing.getHeight();
     }
 
-    public int getSpeed() {
+    public int getSpeed() { // controlleur 
         return speed;
     }
 
-    public String getColor(int x, int y) {
+    public String getColor(int x, int y) { // vue
         //return drawing.getColoredShape(new Point(x, y));
         Point p = new Point(x, y);
             switch (drawing.getColoredShape(p)) {
@@ -103,9 +104,6 @@ public class AsciiPaint {
         redoStack.clear();
     }
 
-    public void removeShapeAt(int x, int y) {
-        drawing.removeShapeAt(new Point(x, y));
-    }
 
     public void removeShape(int shapeIndex) {
         Commands remove = new RemoveCommand(drawing, drawing.getShapeByIndex(shapeIndex));
@@ -131,11 +129,11 @@ public class AsciiPaint {
         redoStack.clear();
     }
 
-    public void setSpeed(String string) {
+    public void setSpeed(String string) { // controlleur
         this.speed = Integer.parseInt(string);
     }
 
-    public void pause() {
+    public void pause() { // controlleur, private
         try {
             Thread.sleep(speed);
         } catch (InterruptedException ex) {
@@ -150,5 +148,6 @@ public class AsciiPaint {
 
     public void redo() {
         redoStack.pop().execute();
+        // undo.push
     }
 }

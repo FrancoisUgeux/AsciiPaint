@@ -1,7 +1,7 @@
 package esi.atl.g43335.asciiPaint.model;
 
 /**
- *
+ * JAVADOC
  * @author g43335
  */
 public class Point {
@@ -9,14 +9,18 @@ public class Point {
     private double x;
     private double y;
 
+    /**
+     * JAVADOC
+     * @param x
+     * @param y 
+     */
     public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     public Point(Point p) {
-        this.x = p.x;
-        this.y = p.y;
+        this(p.x, p.y);
     }
 
     public double getX() {

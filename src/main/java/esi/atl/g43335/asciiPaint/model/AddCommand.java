@@ -6,8 +6,8 @@ package esi.atl.g43335.asciiPaint.model;
  */
 public class AddCommand implements Commands {
 
-    Drawing drawing;
-    Shape shape;
+    private Drawing drawing;
+    private Shape shape;
 
     public AddCommand(Drawing drawing, Shape shape) {
         this.drawing = drawing;

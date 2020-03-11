@@ -24,7 +24,7 @@ public class Circle extends ColoredShape {
         this.radius = radius;
     }
 
-    public Point getCenter() {
+    Point getCenter() {
         return center;
     }
 
@@ -69,7 +69,6 @@ public class Circle extends ColoredShape {
 
     @Override
     public boolean isInside(Point p) {
-        double distance = center.distanceTo(p);
-        return distance <= radius;
+        return center.distanceTo(p) <= radius;
     }
 }

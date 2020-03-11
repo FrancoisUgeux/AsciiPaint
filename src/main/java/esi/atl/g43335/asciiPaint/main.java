@@ -1,7 +1,7 @@
 package esi.atl.g43335.asciiPaint;
 
 import esi.atl.g43335.asciiPaint.controller.Application;
-import esi.atl.g43335.asciiPaint.view.AsciiPaint;
+import esi.atl.g43335.asciiPaint.model.AsciiPaint;
 import esi.atl.g43335.asciiPaint.view.View;
 
 /**

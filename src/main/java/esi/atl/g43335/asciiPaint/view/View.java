@@ -1,5 +1,6 @@
 package esi.atl.g43335.asciiPaint.view;
 
+import esi.atl.g43335.asciiPaint.model.AsciiPaint;
 import esi.atl.g43335.asciiPaint.model.Shape;
 import java.io.InputStream;
 import java.util.List;

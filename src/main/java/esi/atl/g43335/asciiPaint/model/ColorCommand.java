@@ -7,23 +7,23 @@ package esi.atl.g43335.asciiPaint.model;
 public class ColorCommand implements Commands{
 
     Shape shape;
-    char color;
-    char save;
+    char newColor;
+    char oldColor;
 
     public ColorCommand(Shape shape,char color) {
-        this.color = color;
+        this.newColor = color;
         this.shape = shape;
-        this.save = shape.getColor();
+        this.oldColor = shape.getColor();
     }
 
     @Override
     public void execute() {
-        shape.setColor(color);
+        shape.setColor(newColor);
     }
 
     @Override
     public void unexecute() {
-        shape.setColor(save);
+        shape.setColor(oldColor);
     }
 
 }

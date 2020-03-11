@@ -10,7 +10,6 @@ import java.util.List;
 public class GroupCommand implements Commands {
 
     Drawing drawing;
-    List<Shape> shapes;
     Shape shape1;
     Shape shape2;
     Group group;
@@ -28,8 +27,8 @@ public class GroupCommand implements Commands {
     @Override
     public void execute() {
         drawing.addShape(group);
-        drawing.getShapes().remove(shape1);
-        drawing.getShapes().remove(shape2);
+        drawing.remove(shape1);
+        drawing.remove(shape2);
     }
 
     @Override

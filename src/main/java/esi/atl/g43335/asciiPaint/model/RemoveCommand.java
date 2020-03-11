@@ -6,8 +6,7 @@ package esi.atl.g43335.asciiPaint.model;
  */
 public class RemoveCommand implements Commands{
     Drawing drawing;
-    Shape shape;
-    Shape save;
+    Shape shape; // priuvate 
 
     public RemoveCommand(Drawing drawing, Shape shape) {
         this.drawing = drawing;
