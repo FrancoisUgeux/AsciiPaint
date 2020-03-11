@@ -14,6 +14,7 @@ public class Application {
 
     private View view;
     private AsciiPaint paint;
+    private int speed = 0;
 
     public Application(View view, AsciiPaint paint) {
         this.view = view;
@@ -80,7 +81,7 @@ public class Application {
                     view.setInput(System.in);
                     break;
                 case "speed":
-                    paint.setSpeed(param[1]);
+                    setSpeed(param[1]);
                     break;
                 case "undo":
                     paint.undo();
@@ -106,5 +107,9 @@ public class Application {
         } catch (FileNotFoundException ex) {
             System.err.println("File not found " + file);
         }
+    }
+    
+    private void setSpeed(String string) { // controlleur
+        this.speed = Integer.parseInt(string);
     }
 }

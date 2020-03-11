@@ -6,9 +6,9 @@ package esi.atl.g43335.asciiPaint.model;
  */
 public class ColorCommand implements Commands{
 
-    Shape shape;
-    char newColor;
-    char oldColor;
+    private Shape shape;
+    private char newColor;
+    private char oldColor;
 
     public ColorCommand(Shape shape,char color) {
         this.newColor = color;

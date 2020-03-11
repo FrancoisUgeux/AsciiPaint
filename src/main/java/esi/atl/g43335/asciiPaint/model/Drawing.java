@@ -70,14 +70,6 @@ public class Drawing {
         }
     }
 
-    void removeShapeAt(Point point) {
-        for (Shape shape : shapes) {
-            if (shape.isInside(point)) {
-                shapes.remove(shape); // tu les retire toutes ?
-            }
-        }
-    }
-    
     void remove(Shape shape){
         shapes.remove(shape);
     }

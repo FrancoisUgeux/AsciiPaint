@@ -9,10 +9,10 @@ import java.util.List;
  */
 public class GroupCommand implements Commands {
 
-    Drawing drawing;
-    Shape shape1;
-    Shape shape2;
-    Group group;
+    private Drawing drawing;
+    private Shape shape1;
+    private Shape shape2;
+    private Group group;
 
     public GroupCommand(Drawing drawing, Shape shape1, Shape shape2, char color) {
         this.drawing = drawing;

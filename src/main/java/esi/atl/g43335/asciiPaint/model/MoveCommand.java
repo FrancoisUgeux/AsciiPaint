@@ -5,9 +5,9 @@ package esi.atl.g43335.asciiPaint.model;
  * @author franc
  */
 public class MoveCommand implements Commands{
-    Shape shape; // private 
-    int dx;
-    int dy;
+    private Shape shape;
+    private int dx;
+    private int dy;
 
     public MoveCommand(Shape shape, int dx, int dy) {
         this.shape = shape;

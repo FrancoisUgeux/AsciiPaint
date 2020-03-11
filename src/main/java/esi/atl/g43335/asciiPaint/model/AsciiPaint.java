@@ -129,9 +129,9 @@ public class AsciiPaint {
         redoStack.clear();
     }
 
-    public void setSpeed(String string) { // controlleur
-        this.speed = Integer.parseInt(string);
-    }
+   // public void setSpeed(String string) { // controlleur
+   //     this.speed = Integer.parseInt(string);
+   // }
 
     public void pause() { // controlleur, private
         try {
